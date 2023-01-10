@@ -1,0 +1,38 @@
+[alias]
+	br = branch -av
+	ci = commit
+	co = checkout
+	ft = fetch --all --prune
+	last = log -1 HEAD
+	lol = log --graph --pretty=format:'%Cred%h%Creset | %Cgreen%an%Creset | %C(yellow)%ar%Creset | %s %C(auto)%d%Creset' --abbrev-commit --all
+	st = status
+	tags = !sh -c 'git tag -l | xargs -n 1 -I tag git log --color --pretty=format:\"%Cred%h%Creset - %C(yellow)tag%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" -1 tag'
+	zip = "!f() { git archive --format zip HEAD $(git diff  --diff-filter=ACMRTUXB --name-only "$1"..HEAD); }; f" > ../changes_since_$1.zip
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = green
+	changed = red
+	untracked = yellow
+[core]
+	autocrlf = false
+	editor = vim
+	fileMode = false
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
+[push]
+	default = simple
+
