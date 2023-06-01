@@ -1,6 +1,6 @@
-require('user.plugins')
-require('user.options')
-require('user.keymaps')
-require('user.misc')
+require('plugins')
+require('options')
+-- require('keymaps')
+-- require('misc')
 
 -- vim: nospell
